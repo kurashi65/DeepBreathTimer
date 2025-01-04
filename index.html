@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>深呼吸タイマー</title>
+    <link rel="stylesheet" href="styles.css"> <!-- CSSファイルのリンク -->
+</head>
+<body>
+    <h1>深呼吸タイマー</h1>
+    <form id="timerSettings">
+        <div>
+            <label for="workInterval">作業間隔（分）:</label>
+            <input type="number" id="workInterval" name="workInterval" min="1" value="25">
+        </div>
+        <div>
+            <label for="breakInterval">深呼吸時間（分）:</label>
+            <input type="number" id="breakInterval" name="breakInterval" min="1" value="5">
+        </div>
+        <button type="submit">セット</button>
+    </form>
+    
+    <h2>タイマー</h2>
+    <div id="workTimer">作業時間: 00:00:00</div>
+    <div id="breakTimer">休憩時間: 00:00:00</div>
+    <div id="workLogSummary">今日の作業時間: 0時間 0分 0秒</div>
+    <ul id="detailedWorkLogs"></ul>
+    <button onclick="clearLocalStorage()">データをリセット</button>
+
+    
+    <script src="script.js"></script> <!-- JavaScriptファイルのリンク -->
+</body>
+</html>

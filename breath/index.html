@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>呼吸ガイダンス</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="breathing-circle" class="circle"></div>
+
+    <form id="breathing-form">
+        <input type="number" id="inhale-time" placeholder="息を吸う時間（秒）">
+        <input type="number" id="pause-time-after-inhale" placeholder="止まる時間（秒）">
+        <input type="number" id="exhale-time" placeholder="吐き出す時間（秒）">
+        <input type="number" id="pause-time-after-exhale" placeholder="止まる時間（秒）">
+        <input type="number" id="cycles" placeholder="呼吸の周期の数">
+        <button type="button" id='start-breathing-btn'onclick="startBreathing()">開始</button>
+    </form>
+
+    <script src="script.js"></script>
+    <audio id="inhale-sound" src="inhale.m4a" preload="auto"></audio>
+    <audio id="exhale-sound" src="exhale.m4a" preload="auto"></audio>
+
+</body>
+</html>
