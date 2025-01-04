@@ -1,6 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // 通知の許可を確認し、必要に応じてユーザーに許可を求める
+    if (Notification.permission !== "granted" && Notification.permission !== "denied") {
+        Notification.requestPermission().then(permission => {
+            if (permission === "granted") {
+                console.log("Notification permission granted.");
+            } else {
+                console.log("Notification permission denied.");
+            }
+        });
+    }
+
+    // その他の初期化関数
     loadSettings();
+    displayTodayWorkLog();
 });
+
 
 function loadSettings() {
     // LocalStorageから作業時間と休憩時間を読み込む
