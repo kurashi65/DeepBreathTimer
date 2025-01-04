@@ -1,19 +1,35 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 通知の許可を確認し、必要に応じてユーザーに許可を求める
-    if (Notification.permission !== "granted" && Notification.permission !== "denied") {
-        Notification.requestPermission().then(permission => {
-            if (permission === "granted") {
-                console.log("Notification permission granted.");
-            } else {
-                console.log("Notification permission denied.");
-            }
-        });
-    }
+    checkNotificationPermission();
 
     // その他の初期化関数
     loadSettings();
     displayTodayWorkLog();
 });
+
+function checkNotificationPermission() {
+    if (Notification.permission === "denied") {
+        displayNotificationSettingsHelp();
+    } else if (Notification.permission !== "granted") {
+        requestNotificationPermission();
+    }
+}
+
+function requestNotificationPermission() {
+    Notification.requestPermission().then(permission => {
+        if (permission === "granted") {
+            console.log("Notification permission granted.");
+        } else {
+            console.log("Notification permission denied.");
+        }
+    });
+}
+
+function displayNotificationSettingsHelp() {
+    const helpText = document.createElement('p');
+    helpText.textContent = "通知がブロックされています。ブラウザの設定で通知を許可してください。";
+    document.body.appendChild(helpText);
+}
+
 
 
 function loadSettings() {
